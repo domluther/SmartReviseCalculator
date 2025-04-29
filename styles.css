@@ -195,6 +195,15 @@ tbody td {
     border-bottom: 1px solid var(--secondary-color);
 }
 
+tbody td:first-child {
+    font-weight:600;
+    text-align: left;
+}
+
+tbody td{
+    text-align: center;
+}
+
 .below-target {
     background-color: var(--below-target) !important;
 }

@@ -12,9 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add event listener for target points changes
-    document.getElementById('targetPoints').addEventListener('input', function() {
-        updateTargetHighlighting();
-    });
+    document.getElementById('targetPoints').addEventListener('input', calculatePoints);
+    // Used to call targetHighlighting
 });
 
 function parseData(text) {
@@ -52,6 +51,7 @@ function calculatePoints() {
     const quizPointsValue = parseInt(document.getElementById('quizPoints').value, 10) || 1;
     const termsPointsValue = parseInt(document.getElementById('termsPoints').value, 10) || 3;
     const advancedPointsValue = parseInt(document.getElementById('advancedPoints').value, 10) || 8;
+    const targetValue = parseInt(document.getElementById('targetPoints').value, 10) || 8;
     
     // Parse data from text areas
     const quizData = parseData(document.getElementById('quizMode').value);
@@ -106,10 +106,12 @@ function calculatePoints() {
         const termsPoints = student.termsAttempts * termsPointsValue;
         const advancedPoints = student.advancedAttempts * advancedPointsValue;
         const totalPoints = quizPoints + termsPoints + advancedPoints;
+        const toGo = targetValue - totalPoints;
         
         return {
             ...student,
-            totalPoints
+            totalPoints,
+            toGo
         };
     });
     
@@ -143,6 +145,7 @@ function displayResults() {
             <td>${student.termsAttempts}</td>
             <td>${student.advancedAttempts}</td>
             <td>${student.totalPoints}</td>
+            <td>${student.toGo}</td>
         `;
         
         tbody.appendChild(row);
