@@ -3,6 +3,18 @@ let calculatedResults = []; // Store results for reuse when updating target
 document.addEventListener('DOMContentLoaded', function() {
     const calculateBtn = document.getElementById('calculateBtn');
     calculateBtn.addEventListener('click', calculatePoints);
+
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', () => {
+        document.getElementById('quizMode').value = '';
+        document.getElementById('termsMode').value = '';
+        document.getElementById('advancedMode').value = '';
+        document.getElementById('resultsBody').innerHTML = '';
+        document.getElementById('targetPoints').value = 100;
+        document.getElementById('quizPoints').value = 1;
+        document.getElementById('termsPoints').value = 3;
+        document.getElementById('advancedPoints').value = 8;
+    });
     
     // Add event listeners to table headers for sorting
     document.querySelectorAll('th[data-sort]').forEach(header => {
