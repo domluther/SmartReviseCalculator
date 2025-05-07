@@ -59,26 +59,31 @@
     
     <div class="results-container" id="results">
         <h2 class="section-title">Results</h2>
-        <div class="color-legend">
-            <div class="legend-item">
-                <div class="legend-color legend-below"></div>
-                <span>Below Target</span>
+        <div class="view-options">
+            <div class="checkbox-container">
+                <input type="checkbox" id="detailedView" checked>
+                <label for="detailedView">Detailed view</label>
             </div>
-            <div class="legend-item">
-                <div class="legend-color legend-above"></div>
-                <span>Above Target</span>
+            <div class="color-legend">
+                <div class="legend-item">
+                    <div class="legend-color legend-below"></div>
+                    <span>Below Target</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color legend-above"></div>
+                    <span>Above Target</span>
+                </div>
             </div>
         </div>
         <table id="resultsTable">
             <thead>
                 <tr>
                     <th class="sort-icon" data-sort="name">Student Name</th>
-                    <th>Quiz Attempts</th>
-                    <th>Terms Attempts</th>
-                    <th>Advanced Attempts</th>
+                    <th class="detailed-column">Quiz Attempts</th>
+                    <th class="detailed-column">Terms Attempts</th>
+                    <th class="detailed-column">Advanced Attempts</th>
                     <th class="sort-icon" data-sort="points">Total Points</th>
-                    <th>Points to go</th>
-
+                    <th class="detailed-column">Points to go</th>
                 </tr>
             </thead>
             <tbody id="resultsBody"></tbody>

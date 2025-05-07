@@ -25,8 +25,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listener for target points changes
     document.getElementById('targetPoints').addEventListener('input', calculatePoints);
-    // Used to call targetHighlighting
+    
+    // Add event listener for detailed view toggle
+    document.getElementById('detailedView').addEventListener('change', toggleDetailedView);
 });
+
+function toggleDetailedView() {
+    const detailedView = document.getElementById('detailedView').checked;
+    const table = document.getElementById('resultsTable');
+    
+    if (detailedView) {
+        table.classList.remove('hide-detailed');
+    } else {
+        table.classList.add('hide-detailed');
+    }
+}
 
 function parseData(text) {
     const students = [];
@@ -132,6 +145,9 @@ function calculatePoints() {
     
     // Display results
     displayResults();
+    
+    // Apply current detailed view setting
+    toggleDetailedView();
 }
 
 function displayResults() {
@@ -141,7 +157,7 @@ function displayResults() {
     if (calculatedResults.length === 0) {
         // Show no data message
         const row = document.createElement('tr');
-        row.innerHTML = '<td colspan="5" style="text-align: center; padding: 20px;">No data available. Please enter student data and calculate points.</td>';
+        row.innerHTML = '<td colspan="6" style="text-align: center; padding: 20px;">No data available. Please enter student data and calculate points.</td>';
         tbody.appendChild(row);
         return;
     }
@@ -153,11 +169,11 @@ function displayResults() {
         
         row.innerHTML = `
             <td>${student.name}</td>
-            <td>${student.quizAttempts}</td>
-            <td>${student.termsAttempts}</td>
-            <td>${student.advancedAttempts}</td>
+            <td class="detailed-column">${student.quizAttempts}</td>
+            <td class="detailed-column">${student.termsAttempts}</td>
+            <td class="detailed-column">${student.advancedAttempts}</td>
             <td>${student.totalPoints}</td>
-            <td>${student.toGo}</td>
+            <td class="detailed-column">${student.toGo}</td>
         `;
         
         tbody.appendChild(row);

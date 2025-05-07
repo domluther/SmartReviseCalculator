@@ -264,6 +264,36 @@ tbody td{
     background-color: var(--above-target);
 }
 
+
+.view-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    color: var(--light-text);
+    cursor: pointer;
+}
+
+/* Hide detailed columns when checkbox is unchecked */
+.hide-detailed .detailed-column {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .points-config {
         flex-direction: column;
