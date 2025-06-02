@@ -166,6 +166,9 @@ function displayResults() {
         const row = document.createElement('tr');
         
         row.dataset.points = student.totalPoints; // Store points as data attribute for easy access
+        row.dataset.quizAttempts = student.quizAttempts; // Store quiz attempts
+        row.dataset.termsAttempts = student.termsAttempts; // Store terms attempts
+        row.dataset.advancedAttempts = student.advancedAttempts; // Store advanced attempts
         
         row.innerHTML = `
             <td>${student.name}</td>
@@ -251,6 +254,24 @@ function sortTable(column) {
         } else if (column === 'points') {
             aValue = parseInt(a.dataset.points, 10);
             bValue = parseInt(b.dataset.points, 10);
+            return currentSort.direction === 'asc' 
+                ? aValue - bValue 
+                : bValue - aValue;
+        } else if (column === 'quiz') {
+            aValue = parseInt(a.dataset.quizAttempts, 10);
+            bValue = parseInt(b.dataset.quizAttempts, 10);
+            return currentSort.direction === 'asc' 
+                ? aValue - bValue 
+                : bValue - aValue;
+        } else if (column === 'terms') {
+            aValue = parseInt(a.dataset.termsAttempts, 10);
+            bValue = parseInt(b.dataset.termsAttempts, 10);
+            return currentSort.direction === 'asc' 
+                ? aValue - bValue 
+                : bValue - aValue;
+        } else if (column === 'advanced') {
+            aValue = parseInt(a.dataset.advancedAttempts, 10);
+            bValue = parseInt(b.dataset.advancedAttempts, 10);
             return currentSort.direction === 'asc' 
                 ? aValue - bValue 
                 : bValue - aValue;
